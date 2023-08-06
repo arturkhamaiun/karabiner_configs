@@ -1,8 +1,8 @@
 {
-  "title": "Rebind Cmd+Q/W/E/R to Opt+Q/W/E/R for Dota2",
+  "title": "0Rebind Cmd+Q/W/E/R to Opt+Q/W/E/R for Dota2",
   "rules": [
     {
-      "description": "Rebind Cmd+Q/W/E/R to Opt+Q/W/E/R for Dota2",
+      "description": "0Rebind Cmd+Q/W/E/R to Opt+Q/W/E/R for Dota2",
       "manipulators": [
         {
           "type": "basic",
