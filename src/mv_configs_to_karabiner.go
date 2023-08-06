@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"os/exec"
 	"path/filepath"
 )
 
@@ -17,15 +18,30 @@ func main() {
 	files, err := ioutil.ReadDir(configsPath)
 	panicIfErr(err)
 
-	for _, file := range files {
-		homeDir, err := os.UserHomeDir()
-		panicIfErr(err)
+	homeDir, err := os.UserHomeDir()
+	panicIfErr(err)
 
-		src := configsPath + "/" + file.Name()
-		dst := homeDir + "/.config/karabiner/assets/complex_modifications/" + file.Name()
+	srcPath := configsPath + "/"
+	dstPath := homeDir + "/.config/karabiner/assets/complex_modifications/"
+
+	for _, file := range files {
+		src := srcPath + file.Name()
+		dst := dstPath + file.Name()
 
 		data, err := ioutil.ReadFile(src)
 		panicIfErr(err)
+
+		cmd := exec.Command(
+			"/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli",
+			"--lint-complex-modifications",
+			src,
+		)
+
+		if err := cmd.Run(); err != nil {
+			fmt.Println("Invalid karbiner config for file: " + src)
+			fmt.Println("")
+			continue
+		}
 
 		dstFile, err := os.OpenFile(dst, os.O_CREATE|os.O_WRONLY, 0644)
 		panicIfErr(err)
