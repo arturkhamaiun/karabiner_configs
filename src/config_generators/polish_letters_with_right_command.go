@@ -1,4 +1,4 @@
-package main
+package config_generators
 
 import (
 	"encoding/json"
@@ -9,8 +9,6 @@ import (
 )
 
 func main() {
-	// karabiner config folder: /.config/karabiner/assets/complex_modifications/
-
 	rules := map[string]interface{}{
 		"title": "0Polish letters with right command (ąćęłńóśźż)",
 		"rules": []map[string]interface{}{
