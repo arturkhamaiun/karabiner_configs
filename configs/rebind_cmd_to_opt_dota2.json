@@ -87,8 +87,8 @@
               "bundle_identifiers": ["^com\\.valvesoftware\\.dota2$"]
             }
           ]
-        },
+        }
       ]
-    },
+    }
   ]
 }
