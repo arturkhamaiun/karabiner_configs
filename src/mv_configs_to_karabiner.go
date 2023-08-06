@@ -43,7 +43,7 @@ func main() {
 			continue
 		}
 
-		dstFile, err := os.OpenFile(dst, os.O_CREATE|os.O_WRONLY, 0644)
+		dstFile, err := os.OpenFile(dst, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0644)
 		panicIfErr(err)
 
 		fmt.Println("Writing...")
